@@ -1,5 +1,6 @@
 package hello.hellospring;
 
+import hello.hellospring.Repository.JpaMemberRepository;
 import hello.hellospring.Repository.MemberRepository;
 import hello.hellospring.Repository.MemoryMemberRepository;
 import hello.hellospring.Service.MemberService;
@@ -12,6 +13,7 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
+
     private final DataSource dataSource;
 
     private final EntityManager em;
@@ -19,6 +21,7 @@ public class SpringConfig {
     public SpringConfig(DataSource dataSource, EntityManager em) {
         this.dataSource = dataSource;
         this.em = em;
+
     }
 
     @Bean
@@ -28,7 +31,7 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
+        return (MemberRepository) new JpaMemberRepository(em);
     }
 
 }

@@ -23,10 +23,6 @@ class MemoryMemberRepositoryTest {
         member2.setName("spring2");
     }
 
-    @AfterEach
-    public void afterEach(){
-        memberRepository.clearRepository();
-    }
 
 
     @Test
