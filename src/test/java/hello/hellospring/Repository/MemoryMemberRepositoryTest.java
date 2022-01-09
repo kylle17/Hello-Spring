@@ -1,3 +1,4 @@
+/*
 package hello.hellospring.Repository;
 
 import hello.hellospring.Domain.Member;
@@ -51,3 +52,4 @@ class MemoryMemberRepositoryTest {
 
 
 }
+*/

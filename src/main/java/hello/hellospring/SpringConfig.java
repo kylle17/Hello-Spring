@@ -1,3 +1,4 @@
+/*
 package hello.hellospring;
 
 import hello.hellospring.Repository.JpaMemberRepository;
@@ -10,9 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
-@Configuration
-public class SpringConfig {
 
+public class SpringConfig {
 
     private final DataSource dataSource;
 
@@ -31,7 +31,8 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return (MemberRepository) new JpaMemberRepository(em);
+        return new JpaMemberRepository(em);
     }
 
 }
+*/

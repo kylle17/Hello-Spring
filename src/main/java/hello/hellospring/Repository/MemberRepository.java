@@ -1,3 +1,4 @@
+/*
 package hello.hellospring.Repository;
 
 import hello.hellospring.Domain.Member;
@@ -11,6 +12,7 @@ public interface MemberRepository{
     Member save(Member member);
     Optional<Member> findById(Long id);
     Optional<Member> findByName(String name);
+    List<Member> findByAge(Long age);
     List<Member> findAll();
-
 }
+*/

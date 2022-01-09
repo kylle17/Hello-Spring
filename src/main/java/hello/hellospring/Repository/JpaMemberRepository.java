@@ -1,3 +1,4 @@
+/*
 package hello.hellospring.Repository;
 
 import hello.hellospring.Domain.Member;
@@ -7,7 +8,6 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public class JpaMemberRepository implements MemberRepository {
 
     private final EntityManager em;
@@ -39,4 +39,13 @@ public class JpaMemberRepository implements MemberRepository {
         return result.stream().findAny();
     }
 
+    @Override
+    public List<Member> findByAge(Long age) {
+        return em.createQuery("select m from Member m where  m.age = :age", Member.class)
+                .setParameter("age", age)
+                .getResultList();
+
+    }
+
 }
+*/
