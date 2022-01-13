@@ -10,9 +10,6 @@ public class Member {
     private String name;
     private long age;
 
-    @ManyToOne
-    @JoinColumn(name="TEAM_ID")
-    private  Team team;
 
     public Member() {
     }
@@ -24,20 +21,6 @@ public class Member {
     public Member(String name, long age) {
         this.name = name;
         this.age = age;
-    }
-
-    public Member(String name, long age, Team team) {
-        this.name = name;
-        this.age = age;
-        this.team = team;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
     }
 
     public long getId() {
@@ -64,13 +47,14 @@ public class Member {
         this.age = age;
     }
 
+
+
     @Override
     public String toString() {
         return "Member{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", team=" + team.toString() +
                 '}';
     }
 }

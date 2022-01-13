@@ -1,16 +1,10 @@
 package hello.hellospring.Service;
 
 import hello.hellospring.Domain.Member;
-import hello.hellospring.Domain.Team;
-import hello.hellospring.Domain.TeamName;
 import hello.hellospring.Repository.SpringDataJpaMemberRepository;
-import hello.hellospring.Repository.SpringDataJpaTeamRepository;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -28,31 +22,19 @@ class MemberServiceTest {
     MemberService memberService;
     @Autowired
     SpringDataJpaMemberRepository memberRepository;
-    @Autowired
-    SpringDataJpaTeamRepository teamRepository;
 
 
     @Test
-    @Commit
     void 회원가입() {
         // given
-        List<Team> teams = new ArrayList<Team>();
-        teams.add(new Team(TeamName.경영지원));
-        teams.add(new Team(TeamName.구매));
-        teams.add(new Team(TeamName.생산));
-        teams.add(new Team(TeamName.품질관리));
-        teamRepository.saveAll(teams);
-
-//        Team team = teamRepository.findByTeamName(TeamName.경영지원);
-
-//        Member member = new Member("Hello1", 35 , team ) ;
+        Member member = new Member("Hello1", 35);
 
         // when
-//        Long saveId = memberService.join(member);
+        Long saveId = memberService.join(member);
 
         // then
-//        Member findMember = memberRepository.findById(saveId).get();
-//        assertEquals(member.getName(), findMember.getName());
+        Member findMember = memberRepository.findById(saveId).get();
+        assertEquals(member.getName(), findMember.getName());
 
     }
 
