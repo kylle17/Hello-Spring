@@ -1,7 +1,7 @@
-package hello.hellospring.Service;
+package hello.hellospring.member.Service;
 
-import hello.hellospring.Domain.Member;
-import hello.hellospring.Repository.SpringDataJpaMemberRepository;
+import hello.hellospring.member.Domain.Member;
+import hello.hellospring.member.Repository.SpringDataJpaMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,5 +71,9 @@ public class MemberService {
 
     public void deleteAllMember() {
         memberRepository.deleteAllInBatch();
+    }
+
+    public List<Member> findMemberWithCity(Member member) {
+        return memberRepository.findByCity(member.getCity());
     }
 }

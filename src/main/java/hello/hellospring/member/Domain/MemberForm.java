@@ -1,4 +1,4 @@
-package hello.hellospring.Domain;
+package hello.hellospring.member.Domain;
 
 public class MemberForm {
 
