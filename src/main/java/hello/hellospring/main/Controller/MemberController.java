@@ -3,6 +3,7 @@ package hello.hellospring.main.Controller;
 import hello.hellospring.member.Domain.Member;
 import hello.hellospring.member.Domain.MemberForm;
 import hello.hellospring.member.Service.MemberService;
+import hello.hellospring.team.Domain.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,8 @@ public class MemberController {
 
     @PostMapping("/members/new")
     public String create(MemberForm form) {
-        Member member = new Member(form.getName(), 0 , "서울시", "", "" );
+        Team team = new Team();
+        Member member = new Member(form.getName(), 0 , "서울시", "", "" , team);
         memberService.join(member);
         return "redirect:/";
     }

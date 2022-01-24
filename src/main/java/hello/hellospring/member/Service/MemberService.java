@@ -1,7 +1,7 @@
 package hello.hellospring.member.Service;
 
 import hello.hellospring.member.Domain.Member;
-import hello.hellospring.member.Repository.SpringDataJpaMemberRepository;
+import hello.hellospring.member.Repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,10 @@ import java.util.Optional;
 public class MemberService {
 
     @Autowired
-    SpringDataJpaMemberRepository memberRepository;
+    MemberRepository memberRepository;
 
     @Autowired
-    public MemberService(SpringDataJpaMemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
@@ -29,7 +29,7 @@ public class MemberService {
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName())
                 .ifPresent( m -> {
-                    throw new IllegalStateException(" 이미존재하는 회원입니다. ");
+                    throw new IllegalStateException(" 이미 존재하는 회원입니다. ");
                 });
     }
 

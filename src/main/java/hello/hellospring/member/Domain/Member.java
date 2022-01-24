@@ -15,7 +15,7 @@ public class Member {
     private String street;
     private String zipcode;
     @JoinColumn(name = "team_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL )
     private Team team;
 
 
@@ -23,17 +23,18 @@ public class Member {
 
     }
 
-    public Member(String name, int age, String city, String street, String zipcode ) {
+    public Member(String name, int age, String city, String street, String zipcode, Team team) {
         this.name = name;
         this.age = age;
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
+        this.team = team;
     }
 
-    public void changeTeam( Team team ){
+    public void changeTeam(Team team ){
         this.team = team;
-        this.team.members.add(this);
+        this.team.getMembers().add(this);
     }
 
     public void setCity(String city) {
